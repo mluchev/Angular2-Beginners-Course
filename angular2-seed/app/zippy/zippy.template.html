@@ -1,0 +1,8 @@
+<ul>
+    <zippy-item *ngFor="#zippyItem of zippyItems, #i=index" 
+    [title]="zippyItem.title" 
+    [isExpanded]="expandedItemIndex === i"
+    (click)="expandItem(i)">
+        {{zippyItem.content}}
+    </zippy-item>
+</ul>

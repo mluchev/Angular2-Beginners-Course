@@ -1,0 +1,30 @@
+<form #f="ngForm" (ngSubmit)="submitForm(f)">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input #name="ngForm" ngControl="name" type="text" id="name" class="form-control" minlength="3" required>
+        <div *ngIf="name.errors && name.touched" class="alert alert-danger">
+            <div *ngIf="name.errors.required">*Required field</div>
+            <div *ngIf="name.errors.minlength">*Min length of 3 symbols</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" #email="ngForm" ngControl="email" id="email" class="form-control" required>
+        <div *ngIf="email.errors && email.touched" class="alert alert-danger">
+            <div *ngIf="email.errors.required">*Required field</div>
+        </div>
+    </div>
+    <!--<div class="form-group">
+        <label for="dropdownMenu1">Frequency of emails</label>
+        <div class="dropdown">
+            <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Frequency of emails
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+            <li><a href="#">HTML</a></li>
+            <li><a href="#">CSS</a></li>
+            <li><a href="#">JavaScript</a></li>
+            </ul>
+        </div>
+    </div>-->
+    <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Submit</button>
+</form>

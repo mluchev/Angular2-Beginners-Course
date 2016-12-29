@@ -1,0 +1,17 @@
+<div class="media tweet">
+  <a class="media-left" href="#">
+    <img class="media-object" [src]="tweet.authorImgUrl + authorIndex" 
+    alt="Generic placeholder image">
+  </a>
+  <div class="media-body">
+    <h4 class="media-heading"><span>{{tweet.author}}</span> 
+    <span class="tweeterHandle">{{'@' + tweet.tweeterHandle}}</span></h4>
+        <p>{{tweet.text}}</p>
+        
+        <!--like component-->
+        
+        <like [isLiked]='tweet.isLiked' (toggleLike)='likeToggled($event)'></like>
+        <span>{{tweet.totalLikes }}</span>
+        <!--<div>{{tweet.likesCount}}</div>-->
+  </div>
+</div>

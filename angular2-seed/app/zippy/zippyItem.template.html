@@ -1,0 +1,9 @@
+<li>
+    <div>
+        {{title}}
+        <i class="glyphicon" [ngClass]="{'glyphicon-chevron-down': isExpanded, 'glyphicon-chevron-right': !isExpanded}"></i>
+    </div>
+    <div>
+        <ng-content *ngIf="isExpanded"></ng-content>
+    </div>
+</li>

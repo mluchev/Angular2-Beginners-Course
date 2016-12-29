@@ -1,0 +1,35 @@
+<form [ngFormModel]="changePasswordForm" (ngSubmit)="submitForm()">
+    <div class="form-group">
+        <label for="currentPass">Current Password</label>
+        <input ngControl="currentPass" type="text" id="currentPass" #currentPass="ngForm" class="form-control" required>
+        <div *ngIf="currentPass.errors && currentPass.touched" class="alert alert-danger">
+            <div *ngIf="currentPass.errors.required">*Required field</div>
+            <div *ngIf="currentPass.errors.wrongCurrentPass">*Wrong current password</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="newPass">New Password</label>
+        <input type="text" ngControl="newPass" id="newPass" #newPass="ngForm" class="form-control" minlength="3" required>
+        <div *ngIf="newPass.errors && newPass.touched" class="alert alert-danger">
+            <div *ngIf="newPass.errors.required">*Required field</div>
+            <div *ngIf="newPass.errors.minlength">
+                *Min length of {{newPass.errors.minlength.requiredLength}} symbols
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="confirmPass">Confirm Password</label>
+        <input type="text" ngControl="confirmPass" id="confirmPass" #confirmPass="ngForm" class="form-control" required>
+        <div *ngIf="confirmPass.errors && confirmPass.touched" class="alert alert-danger">
+            <div *ngIf="confirmPass.errors.required">*Required field</div>
+        </div>
+        <div *ngIf="confirmPass.touched && changePasswordForm.errors && changePasswordForm.errors.passwordMismatch"
+        class="alert alert-danger">
+            *Passwords don't match
+        </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit" [disabled]="!changePasswordForm.valid">Submit</button>
+</form>
