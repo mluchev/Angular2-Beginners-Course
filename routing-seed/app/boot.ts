@@ -3,3 +3,4 @@ import {AppComponent} from './app.component'
 import {ROUTER_PROVIDERS} from 'angular2/router'
 
 bootstrap(AppComponent, [ROUTER_PROVIDERS]);
+// provide(PLATFORM_DIRECTIVES, {useValue: [ROUTER_DIRECTIVES], multi: true})
