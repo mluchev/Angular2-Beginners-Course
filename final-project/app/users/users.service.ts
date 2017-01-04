@@ -29,4 +29,10 @@ export class UsersService {
 
         return this._http.post(url, JSON.stringify(user)).map(response => response.json());
     }
+
+    updateUser(id, user) {
+        var url = this._base_url + 'users/' + id;
+
+        return this._http.put(url, JSON.stringify(user)).map(response => response.json());
+    }
 }

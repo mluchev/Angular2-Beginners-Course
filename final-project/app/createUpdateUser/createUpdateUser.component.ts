@@ -16,6 +16,7 @@ export class CreateUpdateUserComponent implements CanDeactivate, OnInit {
     form: ControlGroup;
     user = new User();
     title;
+    id = this._routeParams.get('id');
 
     constructor(fb: FormBuilder, private _usersService: UsersService, private _router: Router, private _routeParams: RouteParams) {
         this.form = fb.group({
@@ -33,10 +34,9 @@ export class CreateUpdateUserComponent implements CanDeactivate, OnInit {
 
 
     ngOnInit() {
-        var id = this._routeParams.get('id');
-        this.title = id ? 'Edit User' : 'New User';
-        if (id) {
-            this._usersService.getUser(id).subscribe(user => {
+        this.title = this.id ? 'Edit User' : 'New User';
+        if (this.id) {
+            this._usersService.getUser(this.id).subscribe(user => {
                 this.user = user;
             }, err => {
                 console.log(err);
@@ -46,10 +46,15 @@ export class CreateUpdateUserComponent implements CanDeactivate, OnInit {
     }
 
     submitForm() {
-        this._usersService.addUser(this.form.value).subscribe(x => {
-            this._router.navigate(['Users']);
+        if (this.id) {
+            this._usersService.updateUser(this.id, this.user).subscribe(x => {
+                this._router.navigate(['Users']);
+            });
+        } else {
+            this._usersService.addUser(this.form.value).subscribe(x => {
+                this._router.navigate(['Users']);
+            });
         }
-        );
     }
 
     routerCanDeactivate(next, previous) {

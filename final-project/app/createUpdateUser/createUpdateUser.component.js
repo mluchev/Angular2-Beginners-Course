@@ -42,6 +42,7 @@ System.register(['angular2/core', 'angular2/router', 'angular2/common', './email
                     this._router = _router;
                     this._routeParams = _routeParams;
                     this.user = new user_1.User();
+                    this.id = this._routeParams.get('id');
                     this.form = fb.group({
                         name: ['', common_1.Validators.required],
                         email: ['', emailValidator_1.EmailValidator.correctEmailFormat],
@@ -56,10 +57,9 @@ System.register(['angular2/core', 'angular2/router', 'angular2/common', './email
                 }
                 CreateUpdateUserComponent.prototype.ngOnInit = function () {
                     var _this = this;
-                    var id = this._routeParams.get('id');
-                    this.title = id ? 'Edit User' : 'New User';
-                    if (id) {
-                        this._usersService.getUser(id).subscribe(function (user) {
+                    this.title = this.id ? 'Edit User' : 'New User';
+                    if (this.id) {
+                        this._usersService.getUser(this.id).subscribe(function (user) {
                             _this.user = user;
                         }, function (err) {
                             console.log(err);
@@ -69,9 +69,16 @@ System.register(['angular2/core', 'angular2/router', 'angular2/common', './email
                 };
                 CreateUpdateUserComponent.prototype.submitForm = function () {
                     var _this = this;
-                    this._usersService.addUser(this.form.value).subscribe(function (x) {
-                        _this._router.navigate(['Users']);
-                    });
+                    if (this.id) {
+                        this._usersService.updateUser(this.id, this.user).subscribe(function (x) {
+                            _this._router.navigate(['Users']);
+                        });
+                    }
+                    else {
+                        this._usersService.addUser(this.form.value).subscribe(function (x) {
+                            _this._router.navigate(['Users']);
+                        });
+                    }
                 };
                 CreateUpdateUserComponent.prototype.routerCanDeactivate = function (next, previous) {
                     if (this.form.dirty) {
