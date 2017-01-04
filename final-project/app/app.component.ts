@@ -2,7 +2,7 @@ import {Component} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 import {NavbarComponent} from './navbar/navbar.component';
 import {UsersComponent} from './users/users.component';
-import {AddUserComponent} from './addUser/addUser.component';
+import {CreateUpdateUserComponent} from './createUpdateUser/createUpdateUser.component';
 import {PostsComponent} from './posts/posts.component';
 
 
@@ -14,9 +14,14 @@ import {PostsComponent} from './posts/posts.component';
         useAsDefault: true
     },
     {
-        path: '/add-user',
-        name: 'AddUser',
-        component: AddUserComponent,
+        path: '/users/new',
+        name: 'NewUser',
+        component: CreateUpdateUserComponent,
+    },
+    {
+        path: '/users/:id',
+        name: 'EditUser',
+        component: CreateUpdateUserComponent,
     },
     {
         path: '/posts',

@@ -10,7 +10,7 @@ import { ROUTER_DIRECTIVES } from 'angular2/router';
     directives: [ROUTER_DIRECTIVES]
 })
 export class UsersComponent implements OnInit {
-    users=[];
+    users;
 
     constructor(private _usersService: UsersService) {
     }
@@ -18,7 +18,6 @@ export class UsersComponent implements OnInit {
     ngOnInit() {
         this._usersService.getUsers().subscribe(res => {
             this.users = res;
-            console.log(res);
         }, err => {
             console.log(err);
        });

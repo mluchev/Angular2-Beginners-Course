@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './navbar/navbar.component', './users/users.component', './addUser/addUser.component', './posts/posts.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './navbar/navbar.component', './users/users.component', './createUpdateUser/createUpdateUser.component', './posts/posts.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', './navbar/navbar.component'
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, navbar_component_1, users_component_1, addUser_component_1, posts_component_1;
+    var core_1, router_1, navbar_component_1, users_component_1, createUpdateUser_component_1, posts_component_1;
     var AppComponent;
     return {
         setters:[
@@ -26,8 +26,8 @@ System.register(['angular2/core', 'angular2/router', './navbar/navbar.component'
             function (users_component_1_1) {
                 users_component_1 = users_component_1_1;
             },
-            function (addUser_component_1_1) {
-                addUser_component_1 = addUser_component_1_1;
+            function (createUpdateUser_component_1_1) {
+                createUpdateUser_component_1 = createUpdateUser_component_1_1;
             },
             function (posts_component_1_1) {
                 posts_component_1 = posts_component_1_1;
@@ -45,9 +45,14 @@ System.register(['angular2/core', 'angular2/router', './navbar/navbar.component'
                             useAsDefault: true
                         },
                         {
-                            path: '/add-user',
-                            name: 'AddUser',
-                            component: addUser_component_1.AddUserComponent,
+                            path: '/users/new',
+                            name: 'NewUser',
+                            component: createUpdateUser_component_1.CreateUpdateUserComponent,
+                        },
+                        {
+                            path: '/users/:id',
+                            name: 'EditUser',
+                            component: createUpdateUser_component_1.CreateUpdateUserComponent,
                         },
                         {
                             path: '/posts',

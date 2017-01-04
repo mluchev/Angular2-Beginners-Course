@@ -30,13 +30,11 @@ System.register(['angular2/core', './users.service', 'angular2/http', 'angular2/
             UsersComponent = (function () {
                 function UsersComponent(_usersService) {
                     this._usersService = _usersService;
-                    this.users = [];
                 }
                 UsersComponent.prototype.ngOnInit = function () {
                     var _this = this;
                     this._usersService.getUsers().subscribe(function (res) {
                         _this.users = res;
-                        console.log(res);
                     }, function (err) {
                         console.log(err);
                     });

@@ -18,19 +18,15 @@ export class UsersService {
         return this._http.get(url).map(response => response.json());
     }
 
-    // getFollowers(username) {
-    //     var url = this._base_url + username + '/followers';
+    getUser(id) {
+        var url = this._base_url + 'users/' + id;
 
-    //     return this._http.get(url).map(response => response.json());
-    // }
+        return this._http.get(url).map(response => response.json());
+    }
 
-    // getUserAndFollowers(username) {
-    //     var userStream = this.getUser(username);
-    //     var followersStream = this.getFollowers(username);
+    addUser(user) {
+        var url = this._base_url + 'users';
 
-    //     var observable = Observable.forkJoin(userStream, followersStream)
-    //         .map(joined => new Object({ user: joined[0], followers: joined[1] }));
-
-    //     return observable;
-    // }
+        return this._http.post(url, JSON.stringify(user)).map(response => response.json());
+    }
 }
