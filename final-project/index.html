@@ -4,6 +4,7 @@
   <base href="/">
   <title>Angular 2 Final Project</title>
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="assets/stylesheets/bootstrap.min.css">
 
@@ -21,17 +22,17 @@
 
   <!-- 2. Configure SystemJS -->
   <script>
-      System.config({
-        packages: {
-          app: {
-            format: 'register',
-            defaultExtension: 'js'
-          }
+    System.config({
+      packages: {
+        app: {
+          format: 'register',
+          defaultExtension: 'js'
         }
-      });
-      System.import('app/boot')
-        .then(null, console.error.bind(console));
-    </script>
+      }
+    });
+    System.import('app/boot')
+      .then(null, console.error.bind(console));
+  </script>
 
 </head>
 

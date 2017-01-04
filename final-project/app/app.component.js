@@ -70,7 +70,7 @@ System.register(['angular2/core', 'angular2/router', './navbar/navbar.component'
                         {
                             path: '/*other',
                             name: 'Other',
-                            redirectTo: ['Users']
+                            redirectTo: ['Posts']
                         },
                     ]),
                     core_1.Component({

@@ -35,6 +35,7 @@ export class UsersComponent implements OnInit {
                     this.users.splice(i, 1);
                 }
             });
+            
             this._usersService.deleteUser(id).subscribe(() => {
                 console.log('Successful delete!')
             }, err => {

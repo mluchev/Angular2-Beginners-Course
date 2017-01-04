@@ -37,7 +37,7 @@ import { NotFoundComponent } from './notFound/notFound.component';
     {
         path: '/*other',
         name: 'Other',
-        redirectTo: ['Users']
+        redirectTo: ['Posts']
     },
 ])
 @Component({
