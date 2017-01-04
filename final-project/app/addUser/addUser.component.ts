@@ -29,5 +29,3 @@ export class AddUserComponent {
         console.log(this.form.value);
     }
 }
-
-}
