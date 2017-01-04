@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './navbar/navbar.component', './users/users.component', './createUpdateUser/createUpdateUser.component', './posts/posts.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './navbar/navbar.component', './users/users.component', './createUpdateUser/createUpdateUser.component', './posts/posts.component', './notFound/notFound.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', './navbar/navbar.component'
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, navbar_component_1, users_component_1, createUpdateUser_component_1, posts_component_1;
+    var core_1, router_1, navbar_component_1, users_component_1, createUpdateUser_component_1, posts_component_1, notFound_component_1;
     var AppComponent;
     return {
         setters:[
@@ -31,6 +31,9 @@ System.register(['angular2/core', 'angular2/router', './navbar/navbar.component'
             },
             function (posts_component_1_1) {
                 posts_component_1 = posts_component_1_1;
+            },
+            function (notFound_component_1_1) {
+                notFound_component_1 = notFound_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -58,6 +61,11 @@ System.register(['angular2/core', 'angular2/router', './navbar/navbar.component'
                             path: '/posts',
                             name: 'Posts',
                             component: posts_component_1.PostsComponent
+                        },
+                        {
+                            path: '/not-found',
+                            name: 'NotFound',
+                            component: notFound_component_1.NotFoundComponent
                         },
                         {
                             path: '/*other',

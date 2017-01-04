@@ -38,6 +38,9 @@ export class CreateUpdateUserComponent implements CanDeactivate, OnInit {
         if (id) {
             this._usersService.getUser(id).subscribe(user => {
                 this.user = user;
+            }, err => {
+                console.log(err);
+                this._router.navigate(['NotFound']);
             });
         }
     }

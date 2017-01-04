@@ -61,6 +61,9 @@ System.register(['angular2/core', 'angular2/router', 'angular2/common', './email
                     if (id) {
                         this._usersService.getUser(id).subscribe(function (user) {
                             _this.user = user;
+                        }, function (err) {
+                            console.log(err);
+                            _this._router.navigate(['NotFound']);
                         });
                     }
                 };

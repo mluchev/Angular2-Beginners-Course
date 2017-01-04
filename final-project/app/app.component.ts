@@ -1,9 +1,10 @@
-import {Component} from 'angular2/core';
-import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
-import {NavbarComponent} from './navbar/navbar.component';
-import {UsersComponent} from './users/users.component';
-import {CreateUpdateUserComponent} from './createUpdateUser/createUpdateUser.component';
-import {PostsComponent} from './posts/posts.component';
+import { Component } from 'angular2/core';
+import { RouteConfig, ROUTER_DIRECTIVES } from 'angular2/router';
+import { NavbarComponent } from './navbar/navbar.component';
+import { UsersComponent } from './users/users.component';
+import { CreateUpdateUserComponent } from './createUpdateUser/createUpdateUser.component';
+import { PostsComponent } from './posts/posts.component';
+import { NotFoundComponent } from './notFound/notFound.component';
 
 
 @RouteConfig([
@@ -27,6 +28,11 @@ import {PostsComponent} from './posts/posts.component';
         path: '/posts',
         name: 'Posts',
         component: PostsComponent
+    },
+    {
+        path: '/not-found',
+        name: 'NotFound',
+        component: NotFoundComponent
     },
     {
         path: '/*other',
