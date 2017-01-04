@@ -2,6 +2,7 @@ import {Component} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 import {NavbarComponent} from './navbar/navbar.component';
 import {UsersComponent} from './users/users.component';
+import {AddUserComponent} from './addUser/addUser.component';
 import {PostsComponent} from './posts/posts.component';
 
 
@@ -11,6 +12,11 @@ import {PostsComponent} from './posts/posts.component';
         name: 'Users',
         component: UsersComponent,
         useAsDefault: true
+    },
+    {
+        path: '/add-user',
+        name: 'AddUser',
+        component: AddUserComponent,
     },
     {
         path: '/posts',
@@ -25,7 +31,10 @@ import {PostsComponent} from './posts/posts.component';
 ])
 @Component({
     selector: 'my-app',
-    template: '<navbar></navbar><router-outlet></router-outlet>',
+    template: `<navbar></navbar>
+    <div class="container">
+    <router-outlet></router-outlet>
+    </div>`,
     directives: [ROUTER_DIRECTIVES, NavbarComponent]
 })
 export class AppComponent { }

@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,33 +10,35 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1;
-    var NavbarComponent;
+    var core_1, http_1;
+    var UsersService;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (router_1_1) {
-                router_1 = router_1_1;
-            }],
+            function (http_1_1) {
+                http_1 = http_1_1;
+            },
+            function (_1) {}],
         execute: function() {
-            NavbarComponent = (function () {
-                function NavbarComponent(router) {
-                    this.router = router;
+            UsersService = (function () {
+                function UsersService(_http) {
+                    this._http = _http;
+                    this._base_url = 'https://jsonplaceholder.typicode.com/';
                 }
-                NavbarComponent = __decorate([
-                    core_1.Component({
-                        selector: 'navbar',
-                        templateUrl: 'app/navbar/navbar.component.html',
-                        directives: [router_1.ROUTER_DIRECTIVES]
-                    }), 
-                    __metadata('design:paramtypes', [router_1.Router])
-                ], NavbarComponent);
-                return NavbarComponent;
+                UsersService.prototype.getUsers = function () {
+                    var url = this._base_url + 'users';
+                    return this._http.get(url).map(function (response) { return response.json(); });
+                };
+                UsersService = __decorate([
+                    core_1.Injectable(), 
+                    __metadata('design:paramtypes', [http_1.Http])
+                ], UsersService);
+                return UsersService;
             }());
-            exports_1("NavbarComponent", NavbarComponent);
+            exports_1("UsersService", UsersService);
         }
     }
 });
-//# sourceMappingURL=navbar.component.js.map
+//# sourceMappingURL=users.service.js.map
