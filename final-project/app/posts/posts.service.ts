@@ -18,6 +18,12 @@ export class PostsService {
         return this._http.get(url).map(response => response.json());
     }
 
+    getComments(id) {
+        var url = this._base_url + 'posts/' + id + '/comments';
+
+        return this._http.get(url).map(response => response.json());
+    }
+
     // getUser(id) {
     //     var url = this._base_url + 'users/' + id;
 

@@ -36,10 +36,19 @@ System.register(['angular2/core', './posts.service', 'angular2/http', '../spinne
                 };
                 PostsComponent.prototype.loadPosts = function () {
                     var _this = this;
-                    this.isLoading = true;
+                    this.isLoadingPosts = true;
                     this._postsService.getPosts().subscribe(function (posts) {
                         _this.posts = posts;
-                        _this.isLoading = false;
+                        _this.isLoadingPosts = false;
+                    });
+                };
+                PostsComponent.prototype.selectPost = function (post) {
+                    var _this = this;
+                    this.selectedPost = post;
+                    this.isLoadingComments = true;
+                    this._postsService.getComments(post.id).subscribe(function (comments) {
+                        _this.selectedPost.comments = comments;
+                        _this.isLoadingComments = false;
                     });
                 };
                 PostsComponent = __decorate([

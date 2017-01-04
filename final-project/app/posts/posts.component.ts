@@ -11,7 +11,9 @@ import {SpinnerComponent} from '../spinner/spinner.component'
 })
 export class PostsComponent implements OnInit {
     posts;
-    isLoading;
+    isLoadingPosts;
+    isLoadingComments;
+    selectedPost;
 
     constructor(private _postsService: PostsService) {
     }
@@ -21,10 +23,19 @@ export class PostsComponent implements OnInit {
     }
 
     loadPosts() {
-        this.isLoading = true;
+        this.isLoadingPosts = true;
         this._postsService.getPosts().subscribe(posts => {
             this.posts = posts;
-             this.isLoading = false;
+             this.isLoadingPosts = false;
+        });
+    }
+    
+    selectPost(post) {
+        this.selectedPost = post;
+        this.isLoadingComments = true;
+        this._postsService.getComments(post.id).subscribe(comments => {
+            this.selectedPost.comments = comments;
+            this.isLoadingComments = false;
         });
     }
 }

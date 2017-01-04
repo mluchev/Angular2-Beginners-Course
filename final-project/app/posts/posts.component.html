@@ -2,11 +2,29 @@
 
 <div class="row">
     <div class="col-md-6 col-lg-6">
-        <spinner [visible]="isLoading"><spinner>
-
+        <spinner [hidden]="!isLoadingPosts"></spinner>
         <ul class="list-group">
-            <li class="list-group-item" *ngFor="#post of posts">{{post.title}}</li>
-        </ul>
+            <li class="list-group-item" *ngFor="#post of posts" (click)=selectPost(post) style="cursor: pointer;">{{post.title}}</li>
+</ul>
+</div>
+
+<div class="col-md-6 col-lg-6">
+    <div class="panel panel-default" *ngIf="selectedPost">
+        <div class="panel-heading">{{selectedPost.title}}</div>
+        <div class="panel-body">
+            <p>{{selectedPost.body}}</p>
+            <hr>
+            <spinner [hidden]="!isLoadingComments"></spinner>
+            <div class="media" *ngFor="#comment of selectedPost.comments; #i=index">
+                <div class="media-left">
+                        <img class="media-object" [src]="'http://lorempixel.com/80/80/people/?random=' + i" style="border-radius: 100%">
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">{{comment.name}}</h4>
+                    <div>{{comment.body}}</div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-6 col-lg-6"></div>
+</div>
 </div>
