@@ -39,6 +39,26 @@ System.register(['angular2/core', './users.service', 'angular2/http', 'angular2/
                         console.log(err);
                     });
                 };
+                UsersComponent.prototype.deleteUser = function (id) {
+                    var _this = this;
+                    var r = confirm("Are you sure?"), removedUser, index;
+                    if (r == true) {
+                        // the optimistic approach - remove the element from the table upfront
+                        this.users.forEach(function (user, i) {
+                            if (user.id === id) {
+                                index = i;
+                                removedUser = user;
+                                _this.users.splice(i, 1);
+                            }
+                        });
+                        this._usersService.deleteUser(id).subscribe(function () {
+                            console.log('Successful delete!');
+                        }, function (err) {
+                            _this.users.splice(index, 0, removedUser);
+                            console.log(err);
+                        });
+                    }
+                };
                 UsersComponent = __decorate([
                     core_1.Component({
                         selector: 'users',

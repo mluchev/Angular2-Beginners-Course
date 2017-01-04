@@ -20,7 +20,28 @@ export class UsersComponent implements OnInit {
             this.users = res;
         }, err => {
             console.log(err);
-       });
+        });
+    }
+
+    deleteUser(id) {
+        var r = confirm("Are you sure?"),
+            removedUser, index;
+        if (r == true) {
+            // the optimistic approach - remove the element from the table upfront
+            this.users.forEach((user, i) => {
+                if (user.id === id) {
+                    index = i;
+                    removedUser = user;
+                    this.users.splice(i, 1);
+                }
+            });
+            this._usersService.deleteUser(id).subscribe(() => {
+                console.log('Successful delete!')
+            }, err => {
+                this.users.splice(index, 0, removedUser);
+                console.log(err);
+            });
+        }
     }
 }
 

@@ -35,4 +35,10 @@ export class UsersService {
 
         return this._http.put(url, JSON.stringify(user)).map(response => response.json());
     }
+
+    deleteUser(id) {
+        var url = this._base_url + 'users/' + 500;
+
+        return this._http.delete(url).map(response => response.json());
+    }
 }
