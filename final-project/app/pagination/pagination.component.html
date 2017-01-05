@@ -1,0 +1,17 @@
+<nav aria-label="Page navigation" ng-if="items && items.length">
+  <ul class="pagination">
+    <li (click)="changePageAction(selectedPageIndex - 1)" [class.disabled]="selectedPageIndex === 0">
+      <a aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li *ngFor="#pageIndex of pageIndexes; #i = index; " [class.active]= "i === selectedPageIndex">
+      <a (click)="changePageAction(i)">{{i + 1}}</a>
+    </li>
+    <li (click)="changePageAction(selectedPageIndex + 1)" [class.disabled]="selectedPageIndex === numOfPages - 1">
+      <a aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>

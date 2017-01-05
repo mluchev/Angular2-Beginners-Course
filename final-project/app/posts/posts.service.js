@@ -27,8 +27,9 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map'], fun
                     this._http = _http;
                     this._base_url = 'https://jsonplaceholder.typicode.com/';
                 }
-                PostsService.prototype.getPosts = function () {
+                PostsService.prototype.getPosts = function (userId) {
                     var url = this._base_url + 'posts';
+                    url = (userId || userId === 0) ? (url + '?userId=' + userId) : url;
                     return this._http.get(url).map(function (response) { return response.json(); });
                 };
                 PostsService.prototype.getComments = function (id) {

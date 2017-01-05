@@ -2,14 +2,23 @@
 
 <div class="row">
     <div class="col-md-6 col-lg-6">
+        <select class="form-control" (change)="loadPosts(u.value)" #u style="margin: 30px 0px;">
+            <option value="">Select a user...</option>
+            <option *ngFor="#user of users" value="{{ user.id }}">
+                {{ user.name }}
+            </option>
+       </select>
+
+       <pagination [items]="posts" [pageSize]="pageSize" (pageChanged)="reloadPostsInPage($event)"></pagination>
+
         <spinner [hidden]="!isLoadingPosts"></spinner>
-        <ul class="list-group">
-            <li class="list-group-item" *ngFor="#post of posts" (click)=selectPost(post) style="cursor: pointer;">{{post.title}}</li>
-</ul>
+        <ul class="list-group" [hidden]="isLoadingPosts">
+            <li class="list-group-item" *ngFor="#post of postsInPage" (click)=selectPost(post) style="cursor: pointer;">{{post.title}}</li>
+        </ul>
 </div>
 
 <div class="col-md-6 col-lg-6">
-    <div class="panel panel-default" *ngIf="selectedPost">
+    <div class="panel panel-default" *ngIf="selectedPost && !isLoadingPosts">
         <div class="panel-heading">{{selectedPost.title}}</div>
         <div class="panel-body">
             <p>{{selectedPost.body}}</p>
