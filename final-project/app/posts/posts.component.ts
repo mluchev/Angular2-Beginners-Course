@@ -11,7 +11,7 @@ import { PaginationComponent } from '../pagination/pagination.component'
     providers: [PostsService, UsersService, HTTP_PROVIDERS],
     directives: [SpinnerComponent, PaginationComponent]
 })
-export class PostsComponent implements OnInit, OnChanges {
+export class PostsComponent implements OnInit {
     posts;
     postsInPage;
     users;
