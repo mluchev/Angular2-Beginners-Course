@@ -2,8 +2,8 @@ import { Component, OnInit, OnChanges } from 'angular2/core';
 import { PostsService } from './posts.service';
 import { UsersService } from '../users/users.service';
 import { HTTP_PROVIDERS } from 'angular2/http';
-import { SpinnerComponent } from '../spinner/spinner.component'
-import { PaginationComponent } from '../pagination/pagination.component'
+import { SpinnerComponent } from '../shared/spinner/spinner.component'
+import { PaginationComponent } from '../shared/pagination/pagination.component'
 
 @Component({
     selector: 'posts',
@@ -54,8 +54,8 @@ export class PostsComponent implements OnInit {
     }
 
     private getPostsInPage(pageIndex) {
-        var firstElemIndex = pageIndex * this.pageSize + 1,
-            lastElemIndex =  Math.min((pageIndex + 1) * this.pageSize + 1, this.posts.length);
+        var firstElemIndex = pageIndex * this.pageSize,
+            lastElemIndex =  Math.min((pageIndex + 1) * this.pageSize, this.posts.length);
 
         return this.posts.slice(firstElemIndex, lastElemIndex);
     }

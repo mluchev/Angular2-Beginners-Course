@@ -37,7 +37,7 @@ export class UsersService {
     }
 
     deleteUser(id) {
-        var url = this._base_url + 'users/' + 500;
+        var url = this._base_url + 'users/' + id;
 
         return this._http.delete(url).map(response => response.json());
     }

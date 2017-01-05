@@ -44,7 +44,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map'], fun
                     return this._http.put(url, JSON.stringify(user)).map(function (response) { return response.json(); });
                 };
                 UsersService.prototype.deleteUser = function (id) {
-                    var url = this._base_url + 'users/' + 500;
+                    var url = this._base_url + 'users/' + id;
                     return this._http.delete(url).map(function (response) { return response.json(); });
                 };
                 UsersService = __decorate([

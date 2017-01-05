@@ -1,10 +1,10 @@
 import { Component } from 'angular2/core';
 import { RouteConfig, ROUTER_DIRECTIVES } from 'angular2/router';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
 import { UsersComponent } from './users/users.component';
 import { CreateUpdateUserComponent } from './createUpdateUser/createUpdateUser.component';
 import { PostsComponent } from './posts/posts.component';
-import { NotFoundComponent } from './notFound/notFound.component';
+import { NotFoundComponent } from './shared/notFound/notFound.component';
 
 
 @RouteConfig([

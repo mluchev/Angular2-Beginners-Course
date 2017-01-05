@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter, OnChanges } from 'angular2/core
 
 @Component({
     selector: 'pagination',
-    templateUrl: 'app/pagination/pagination.component.html',
+    templateUrl: 'app/shared/pagination/pagination.component.html',
 })
 export class PaginationComponent implements OnChanges {
     @Input() pageSize;

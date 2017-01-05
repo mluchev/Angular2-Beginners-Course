@@ -1,4 +1,4 @@
-System.register(['angular2/core', './posts.service', '../users/users.service', 'angular2/http', '../spinner/spinner.component', '../pagination/pagination.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './posts.service', '../users/users.service', 'angular2/http', '../shared/spinner/spinner.component', '../shared/pagination/pagination.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -69,7 +69,7 @@ System.register(['angular2/core', './posts.service', '../users/users.service', '
                     });
                 };
                 PostsComponent.prototype.getPostsInPage = function (pageIndex) {
-                    var firstElemIndex = pageIndex * this.pageSize + 1, lastElemIndex = Math.min((pageIndex + 1) * this.pageSize + 1, this.posts.length);
+                    var firstElemIndex = pageIndex * this.pageSize, lastElemIndex = Math.min((pageIndex + 1) * this.pageSize, this.posts.length);
                     return this.posts.slice(firstElemIndex, lastElemIndex);
                 };
                 PostsComponent.prototype.reloadPostsInPage = function (e) {
